@@ -1,0 +1,110 @@
+## Loading library
+library(tidyverse)
+
+## Using Mpg data set
+
+mpg
+
+## Simple scatterplot 
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+## Scatterplot with respect to class presenting in different color
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+
+## Scatterplot with respecct to class for different size
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, size = class))
+
+
+## With respect to different alpha
+
+## # Top
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+
+# Bottom
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+
+## Coloring all the point
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+
+## This is not same as before. It colored all the points but the previous one 
+## just color with respect to the class
+
+## Excercises
+
+# 1. Colored is defined under the aesthetic function.
+# 2. 
+
+str(mpg)
+
+## 3. 
+
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, color = cyl))
+
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, size = cyl))
+
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, alpha = cyl))
+
+## This changes with respect to the magnitude of the cyl.
+
+
+## 4.
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = hwy, y = hwy, color = hwy))
+
+## We get a straight line with respect to different color for different magnitude
+
+## 5. 
+
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, stroke = cyl))
+
+## It plots everything with respect to the size of the data point. 
+
+## 6. 
+
+
+ggplot(data = mpg)+
+  geom_point(mapping = aes(x = displ, y = hwy, color = displ < 5))
+
+## It plots everything but colored the values for which the argument is false.
+
+## Faceting 
+
+# Facet wrapping
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_wrap(~ class, nrow = 2)
+
+# Facet griding for two variable
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ cyl)
+
+## Facet gridding without specifing any column
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(. ~ cyl)
+
+# Exercise
+# 1.
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_wrap(~ cty, nrow = 2)
+# It create 
